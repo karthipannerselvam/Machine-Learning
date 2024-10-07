@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <header>
+        <h1>Product Recommendations</h1>
+    </header>
+    <main>
+        <form id="recommendation-form" method="post">
+            <label for="customer_id">Enter Customer ID:</label>
+            <input type="text" id="customer_id" name="customer_id" required>
+            <button type="submit">Get Recommendations</button>
+        </form>
+        <div id="recommendations-container">
+            {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+            {% elif recommendations %}
+                <h2>Recommended Products:</h2>
+                <ul id="recommendations-list">
+                    {% for product in recommendations %}
+                        <li>{{ product }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
