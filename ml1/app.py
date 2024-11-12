@@ -17,6 +17,7 @@ df = pd.DataFrame(data)
 # Initial hypothesis template
 initial_hypothesis = ['?', '?', '?', '?']
 
+
 # Helper function to update hypothesis
 def update_hypothesis(hypothesis, example):
     new_hypothesis = hypothesis[:]
